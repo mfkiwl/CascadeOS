@@ -47,6 +47,8 @@ pub fn kernelInitStage1() linksection(kernel.info.init_code) noreturn {
     log.info("capturing bootloader information", .{});
     captureBootloaderInformation();
 
+    kernel.acpi.init.earlyInitAcpiTables();
+
     log.info("capturing system information", .{});
     kernel.arch.init.captureSystemInformation();
 
